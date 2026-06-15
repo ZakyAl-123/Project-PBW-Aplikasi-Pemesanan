@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --primary: #f39c12;
+    --text-light: #ffffff;
+    --text-muted: #a0a0a0;
+    --border: #333333;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 100px; /* Ruang untuk floating cart */
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-info h1 {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.table-badge {
+    font-size: 0.8rem;
+    background: rgba(243, 156, 18, 0.2);
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.btn-member {
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-member:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+/* Menu List */
+.menu-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    display: flex;
+    background-color: var(--bg-card);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.menu-item img {
+    width: 120px;
+    object-fit: cover;
+}
+
+.menu-details {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-details h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.menu-details p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.menu-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Tombol + dan - */
+.qty-control {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+    border-radius: 30px;
+    padding: 5px;
+    border: 1px solid var(--border);
+}
+
+.qty-control button {
+    background: var(--primary);
+    border: none;
+    color: #000;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qty-display {
+    width: 30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Floating Cart / Keranjang Belanja Bawah */
+.floating-cart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(100%); /* Sembunyi secara default */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.floating-cart.show {
+    transform: translateY(0); /* Muncul saat ada pesanan */
+}
+
+.cart-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-total-items {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.cart-total-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.btn-checkout {
+    background-color: var(--primary);
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Modal Struk Tagihan */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: flex-end; /* Muncul dari bawah di HP */
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+
+.modal-overlay.show {
+    opacity: 1; pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--bg-main);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px 20px 0 0;
+    padding: 25px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    border-top: 1px solid var(--border);
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 15px; margin-bottom: 15px;
+}
+
+.close-btn { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+.table-info { font-size: 0.9rem; margin-bottom: 15px; color: var(--text-muted); }
+
+.order-item-row {
+    display: flex; justify-content: space-between;
+    margin-bottom: 10px; font-size: 0.9rem;
+}
+
+.item-qty-name { display: flex; gap: 10px; }
+.item-qty { color: var(--primary); font-weight: bold; }
+
+.bill-total {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border);
+    font-size: 1.1rem;
+}
+
+.bill-total strong { color: var(--primary); font-size: 1.3rem; }
+
+.modal-footer {
+    display: flex; gap: 10px; margin-top: 25px;
+}
+
+.modal-footer button {
+    flex: 1; padding: 12px; border-radius: 10px; font-weight: 600; border: none; cursor: pointer;
+}
+
+.btn-secondary { background: var(--bg-card); color: #fff; border: 1px solid var(--border) !important; }
+.btn-primary { background: var(--primary); color: #000; }

@@ -1,0 +1,218 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg-main: #121212;
+    --color-bg-surface: #1e1e1e;
+    --color-primary-gold: #f39c12;
+    --color-primary-hover: #e67e22;
+    --color-text-title: #ffffff;
+    --color-text-body: #b3b3b3;
+    --color-border: #333333;
+    --font-base: 'Poppins', sans-serif;
+    --anim-speed: 0.3s;
+}
+
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-title);
+    font-family: var(--font-base);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Memberikan efek background pattern halus */
+    background-image: radial-gradient(rgba(243, 156, 18, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+/* Tombol Kembali */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-body);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: color var(--anim-speed);
+}
+
+.back-btn:hover {
+    color: var(--color-primary-gold);
+}
+
+/* Kartu Login */
+.login-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Header Login */
+.login-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(243, 156, 18, 0.1);
+    color: var(--color-primary-gold);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 15px auto;
+    border: 2px solid rgba(243, 156, 18, 0.3);
+}
+
+.login-header h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-text-title);
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: var(--color-primary-gold);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Form Styling */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--color-text-body);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field i {
+    position: absolute;
+    left: 15px;
+    color: #666;
+    font-size: 1.1rem;
+    transition: color var(--anim-speed);
+}
+
+.input-field input {
+    width: 100%;
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-title);
+    padding: 14px 14px 14px 45px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: var(--font-base);
+    transition: all var(--anim-speed);
+    outline: none;
+}
+
+/* Efek saat input diklik/fokus */
+.input-field input:focus {
+    border-color: var(--color-primary-gold);
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15);
+}
+
+.input-field input:focus + i,
+.input-field input:valid + i {
+    color: var(--color-primary-gold);
+}
+
+/* Options (Ingat Saya & Lupa Password) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.85rem;
+}
+
+.remember-me {
+    color: var(--color-text-body);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    accent-color: var(--color-primary-gold);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.forgot-pass {
+    color: var(--color-primary-gold);
+    text-decoration: none;
+    transition: color var(--anim-speed);
+}
+
+.forgot-pass:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* Tombol Submit */
+.btn-submit {
+    width: 100%;
+    background-color: var(--color-primary-gold);
+    color: #121212;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-base);
+    transition: all var(--anim-speed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3);
+}
+
+/* Footer Login */
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #555;
+    font-size: 0.8rem;
+}

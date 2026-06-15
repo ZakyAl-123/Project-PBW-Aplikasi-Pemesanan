@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard QR - Nasi Cumi Hitam Pak Kris</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <button id="aboutBtn" class="nav-btn"><i class="fa-solid fa-users"></i> Tentang Pengembang</button>
+        <button id="loginBtn" class="nav-btn login-btn"><i class="fa-solid fa-user-shield"></i> Login Owner</button>
+    </nav>
+
+    <div class="container">
+        
+        <header class="hero-section">
+            <div class="restaurant-info">
+                <span class="sub-title">Sistem Pemesanan Mandiri</span>
+                <h1>Nasi Cumi Hitam <span class="highlight">Pak Kris</span></h1>
+                <p class="description">
+                    Nikmati kelezatan legendaris Nasi Cumi Hitam khas Madura langsung dari meja Anda. 
+                    Dimasak dengan tinta cumi alami yang kental nan gurih, berpadu dengan rempah-rempah 
+                    pilihan serta sambal pencit mangga muda yang super pedas mantap. 
+                    Silakan scan QR di samping untuk mulai memesan hidangan favorit Anda!
+                </p>
+                <div class="features-list">
+                    <div class="feature-item"><i class="fa-solid fa-circle-check"></i> Bahan Premium & Segar</div>
+                    <div class="feature-item"><i class="fa-solid fa-circle-check"></i> Resep Asli Madura</div>
+                    <div class="feature-item"><i class="fa-solid fa-circle-check"></i> Tanpa Antre di Kasir</div>
+                </div>
+            </div>
+            
+            <div class="qr-wrapper">
+                <div class="qr-card">
+                    <h2>Pindai Untuk Memesan</h2>
+                    <div class="qr-code-box">
+                        <img src="qr.png" alt="QR Code Pemesanan">
+                    </div>
+                    <p class="qr-hint">Buka Kamera HP Anda dan arahkan ke kode QR di atas</p>
+                    <div class="table-badge">NOMOR MEJA: 08</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="spotlight-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-fire"></i> Menu Spotlight (Andalan Kami)</h2>
+                <p>Kombinasi hidangan paling dicari dan terlaris pilihan para pelanggan</p>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image-container">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=500&q=80" alt="Nasi Cumi Hitam Premium">
+                        <span class="menu-tag">Terlaris</span>
+                    </div>
+                    <div class="menu-details">
+                        <h3>Nasi Cumi Hitam Premium</h3>
+                        <p class="menu-desc">Nasi hangat dengan cumi hitam pekat bertelur, mi kuning goreng, serundeng daging, sambal pencit, dan peyek rempeyek.</p>
+                        <div class="menu-footer">
+                            <span class="price">Rp 42.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image-container">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80" alt="Nasi Cumi Super Komplit">
+                        <span class="menu-tag premium">Rekomendasi</span>
+                    </div>
+                    <div class="menu-details">
+                        <h3>Nasi Cumi Super Komplit</h3>
+                        <p class="menu-desc">Porsi super puas! Cumi hitam, babat paru goreng, sate usus pedas, telur asin, mi goreng, dan serundeng.</p>
+                        <div class="menu-footer">
+                            <span class="price">Rp 55.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-image-container">
+                        <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=500&q=80" alt="Cumi Hitam Ala Carte">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Cumi Hitam Ala Carte</h3>
+                        <p class="menu-desc">Satu porsi penuh cumi hitam bumbu Madura pekat tanpa nasi. Sangat pas untuk menu sharing lauk tengah keluarga Anda.</p>
+                        <div class="menu-footer">
+                            <span class="price">Rp 75.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <div id="aboutModal" class="modal-overlay">
+        <div class="modal-content-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-laptop-code"></i> Tim Pengembang Web</h3>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">Sistem Web Ordering ini dirancang dan dibangun dengan penuh dedikasi oleh tim pengembang kami yang beranggotakan 4 orang:</p>
+                <div class="developer-grid">
+                    <div class="dev-card">
+                        <div class="dev-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <div class="dev-text">
+                            <h4>Syaeful Al Ma'ruf</h4>
+                            <p>Project Manager / Lead Analyst</p>
+                        </div>
+                    </div>
+                    <div class="dev-card">
+                        <div class="dev-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="dev-text">
+                            <h4>Zaky Alfiyan</h4>
+                            <p>Frontend Engineer (UI/UX)</p>
+                        </div>
+                    </div>
+                    <div class="dev-card">
+                        <div class="dev-icon"><i class="fa-solid fa-gears"></i></div>
+                        <div class="dev-text">
+                            <h4>Iqbal</h4>
+                            <p>Backend Engineer (API System)</p>
+                        </div>
+                    </div>
+                    <div class="dev-card">
+                        <div class="dev-icon"><i class="fa-solid fa-database"></i></div>
+                        <div class="dev-text">
+                            <h4>Checa</h4>
+                            <p>Database & DevOps Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
