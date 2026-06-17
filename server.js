@@ -1,47 +1,62 @@
 const express = require('express');
-const db = require('./koneksi'); // Memanggil file koneksi.js yang baru kita buat
+const path = require('path');
+const db = require('./koneksi'); // Memanggil file koneksi.js
 
 const app = express();
 const PORT = 3000;
 
-// Middleware agar Express bisa membaca data dari Form HTML (application/x-www-form-urlencoded)
+// Middleware: Agar bisa membaca data dari form (POST) dan file statis (HTML, CSS, JS)
 app.use(express.urlencoded({ extended: true }));
-// Middleware untuk membaca JSON
 app.use(express.json());
 
-// Rute untuk memproses form login Owner (metode POST)
+// Mengatur folder statis agar CSS dan JS bisa diakses oleh browser
+// Contoh: Jika file CSS ada di folder 'owner-dashboard', maka browser bisa mengaksesnya
+app.use(express.static(path.join(__dirname)));
+
+// 1. Rute Login (Proses dari login.html)
 app.post('/proses-login', async (req, res) => {
-    // Menangkap username dan password dari input form HTML
     const { username, password } = req.body;
 
     try {
-        // Mencari data owner di database (Menggunakan tanda ? untuk mencegah SQL Injection)
         const [rows] = await db.execute('SELECT * FROM tb_owner WHERE username = ?', [username]);
 
-        // Jika username ditemukan
         if (rows.length > 0) {
             const owner = rows[0];
 
-            // Cek password (Catatan: Untuk produksi nyata, gunakan library 'bcrypt' untuk mengecek password yang di-hash)
-            // Di sini kita gunakan teks biasa untuk contoh
+            // Verifikasi Password (Jika di DB masih teks biasa)
             if (password === owner.password) {
-                // Login Berhasil
-                res.send(`<script>alert('Selamat datang, ${owner.nama_lengkap}!'); window.location.href='/Owner/index.html';</script>`);
+                // Login Berhasil - Arahkan ke Dashboard Owner
+                res.send(`
+                    <script>
+                        alert('Selamat datang kembali, ${owner.nama_lengkap}!'); 
+                        window.location.href = '/Owner/index.html';
+                    </script>
+                `);
             } else {
-                // Password Salah
                 res.send("<script>alert('Password salah!'); window.location.href='/login.html';</script>");
             }
         } else {
-            // Username tidak ditemukan
             res.send("<script>alert('Username tidak ditemukan!'); window.location.href='/login.html';</script>");
         }
     } catch (error) {
-        console.error(error);
+        console.error('Error saat login:', error);
         res.status(500).send("Terjadi kesalahan pada server.");
     }
 });
 
+// 2. Rute Dasar (Redirect ke login saat akses homepage)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+// 3. Rute untuk Logout
+app.get('/logout', (req, res) => {
+    res.send("<script>alert('Anda telah keluar.'); window.location.href='/login.html';</script>");
+});
+
 // Menjalankan server
 app.listen(PORT, () => {
-    console.log(`Server Node.js berjalan di http://localhost:${PORT}`);
+    console.log('==============================================');
+    console.log(`Server Nasi Cumi Pak Kris aktif di: http://localhost:${PORT}`);
+    console.log('==============================================');
 });
